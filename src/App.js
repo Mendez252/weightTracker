@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import React from 'react';
+import WeightInput from './component/WeightInput'
 import './App.css';
+import Cal from './component/Cal'
+import {connect} from 'react-redux'
+import {PostWeight} from './redux/actions'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+  state = {currentDate:''}
+
+  postWeight = (weight) =>{
+    this.props.dispatch(PostWeight(weight))
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <Cal />
+        <WeightInput postWeight={this.postWeight}/>
+      </div>
+    );
+  }
 }
 
-export default App;
+function mapStateToProps(state){
+  return {
+    weight:state.weight,
+    currentDate:state.currentDate
+  }
+}
+
+export  default connect (mapStateToProps)( App)
