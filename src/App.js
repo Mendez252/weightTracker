@@ -1,13 +1,12 @@
 import React from 'react';
 import WeightInput from './component/WeightInput'
 import './App.css';
-import Cal from './component/Cal'
+import Dates from './component/Dates'
 import {connect} from 'react-redux'
 import {PostWeight} from './redux/actions'
-
+import State from './component/State'
 
 class App extends React.Component {
-  state = {currentDate:''}
 
   postWeight = (weight) =>{
     this.props.dispatch(PostWeight(weight))
@@ -16,7 +15,8 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
-        <Cal />
+        <State weight={this.props.weight}/>
+        <Dates />
         <WeightInput postWeight={this.postWeight}/>
       </div>
     );

@@ -1,19 +1,19 @@
 import React from 'react';
-import './ActualDate.css'
+import './CurrentDayInput.css'
 
 
-const ActualDate = (props) => {
+const CurrentDateInput = (props) => {
 
   return ( 
     <div className="dateComponent">
       <p>Current date is:</p>
-      or
+      <input type='text' disabled value={props.handleDay}/>
+      <p>or</p>
       <p>Choose your day:</p>
       <div className="disabledInput">
-      <input type='text' disabled value={props.handleDay}/>
       </div>
     </div>
    );
 }
  
-export default ActualDate;
+export default CurrentDateInput;

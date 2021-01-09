@@ -1,29 +1,30 @@
 import React,{useState} from 'react'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
-import './Cal.css'
-import ActualDate from './ActualDate';
+import './Dates.css'
 import moment from 'moment'
+import CurrentDayInput from './CurrentDayInput'
 
 var today = new Date()
+
 //var formatToday = moment(today).format('LLLL')
 
 
 
-function Cal(){
+function Dates(){
   const [value, setValue] = useState(today)
 
-    function onHandleChange(nextValue){
+    const onHandleChange = (nextValue) =>{
       setValue(nextValue)
       console.log(value)
     }
     
     return ( 
       <div className='cal'>
-        <ActualDate handleDay={value}/>
+        <CurrentDayInput handleDay={value}/>
         <Calendar onChange={onHandleChange} value={value}/>
       </div>
     )
 }
  
-export default  Cal;
+export default  Dates;
