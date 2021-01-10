@@ -1,6 +1,6 @@
 const State = (props) => {
   return ( 
-    <div>{props.weight}</div>
+    <div>{props.weight.map(record => <p>{record}</p>)}</div>
    );
 }
  

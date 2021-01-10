@@ -11,20 +11,20 @@ var today = new Date()
 
 
 
-function Dates(){
+function DatesContainer(){
   const [value, setValue] = useState(today)
 
     const onHandleChange = (nextValue) =>{
       setValue(nextValue)
-      console.log(value)
+      console.log(moment(value).format('L'))
     }
     
     return ( 
       <div className='cal'>
-        <CurrentDayInput handleDay={value}/>
+        <CurrentDayInput handleDay={moment(value).format('L')}/>
         <Calendar onChange={onHandleChange} value={value}/>
       </div>
     )
 }
  
-export default  Dates;
+export default  DatesContainer;

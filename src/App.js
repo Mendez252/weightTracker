@@ -1,23 +1,28 @@
 import React from 'react';
 import WeightInput from './component/WeightInput'
 import './App.css';
-import Dates from './component/Dates'
 import {connect} from 'react-redux'
-import {PostWeight} from './redux/actions'
+import {createWeight} from './redux/actions'
 import State from './component/State'
+import DatesContainer from './component/Dates'
+import WeightList from './component/WeightList'
 
 class App extends React.Component {
 
   postWeight = (weight) =>{
-    this.props.dispatch(PostWeight(weight))
+    this.props.dispatch(createWeight(weight))
   }
 
   render(){
     return (
       <div className="App">
-        <State weight={this.props.weight}/>
-        <Dates />
-        <WeightInput postWeight={this.postWeight}/>
+        <div>
+          <DatesContainer />
+          <WeightInput postWeight={this.postWeight}/>
+        </div>
+        <div>
+          <WeightList weights={this.props.weights}/>
+        </div>
       </div>
     );
   }
@@ -25,7 +30,7 @@ class App extends React.Component {
 
 function mapStateToProps(state){
   return {
-    weight:state.weight,
+    weights:state.weights,
     currentDate:state.currentDate
   }
 }

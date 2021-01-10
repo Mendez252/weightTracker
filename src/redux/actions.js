@@ -1,6 +1,6 @@
-export function PostWeight(weight){
+export function createWeight(weight){
   return{
-    type:'POST_WEIGHT',
+    type:'CREATE_WEIGHT',
     payload: weight
   }
 }
