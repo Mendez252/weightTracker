@@ -7,6 +7,7 @@ function WeightInput(props) {
 
   const postWeight = (weight) =>{
     props.postWeight(weight)
+    setWeight('')
   }
 
   const onHandleChange = (e) =>{
@@ -17,7 +18,7 @@ function WeightInput(props) {
       <div className='weightContainer'>
 
         <div className="title">Your weight today is:</div>
-        <input className='inputWeight' type='text' placeholder='Enter your weight:' onChange={onHandleChange}/>
+        <input className='inputWeight' type='text' placeholder='Enter your weight:' onChange={onHandleChange} value={weight}/>
         <button onClick={()=>postWeight(weight)}>Submit</button>
 
       </div>

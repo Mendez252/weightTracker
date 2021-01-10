@@ -1,12 +1,12 @@
 const initialState = {
-  weight:[],
+  weights:[],
   currentDate:[]
 }
 
 export function weightReducer(state = initialState,action){
   switch (action.type){
-    case 'POST_WEIGHT':
-      return {weight:action.payload}
+    case 'CREATE_WEIGHT':
+      return {weights:state.weights.concat(action.payload)}
 
     default:
       return state
